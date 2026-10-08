@@ -10,7 +10,7 @@ Three Image-to-CAD tasks in Parametric CAD Bench v3 Harbor format. Each task fol
 | `hand-cannon-image` | Hand cannon | 25 | 0.035 |
 | `tray-bracket-image` | Perforated tray bracket | 38 | 0.259 |
 
-Kimi K3 scores come from single runs with mini-swe-agent 2.4.6 at reasoning effort max (Oct 2026). Run outputs are not included in this repo.
+Kimi K3 scores come from single runs with mini-swe-agent 2.4.6 at reasoning effort max (Oct 2026). The full run outputs (oracle and Kimi K3) are in [`results/`](results/).
 
 ## Task layout (same for all three)
 
