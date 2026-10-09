@@ -1,0 +1,41 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "sceneactbench/recon-living-room"
+description = "SceneActBench Reconstruction: rebuild the furniture of a living room in Blender from 3 reference views with known camera poses."
+keywords = ["sceneactbench", "3d", "blender", "reconstruction", "vision", "mcp"]
+
+[metadata]
+benchmark = "SceneActBench"
+task_type = "task5_recon"
+sample = "Living room"
+source_blend = "InteriorTest.blend"
+golden_items = ["Sofa", "Table", "Shelf", "Piano", "Bench", "TV_Stand", "TV", "Lamp_Arc", "Lamp_Standing", "Pendant", "Plant"]
+n_golden_objects = 11
+n_reference_views = 3
+fov_x_deg = 39.6
+step_budget_reference = 35
+reward_metric = "obj_f@5%_nn (per-object F-score at 5% of object size, after one global alignment)"
+golden_reward = 1.0
+
+[verifier]
+timeout_sec = 900.0
+
+[agent]
+timeout_sec = 7200.0
+
+[environment]
+build_timeout_sec = 1800.0
+network_mode = "public"
+cpus = 4
+memory_mb = 8192
+workdir = "/app"
+
+[[environment.mcp_servers]]
+name = "blender"
+transport = "stdio"
+command = "/opt/sceneactbench/blender_mcp_stdio.sh"
+args = []
+
+[solution.env]

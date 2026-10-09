@@ -1,0 +1,4 @@
+{
+ "reward": 0.0,
+ "error": "FileNotFoundError('no agent scene to score')"
+}

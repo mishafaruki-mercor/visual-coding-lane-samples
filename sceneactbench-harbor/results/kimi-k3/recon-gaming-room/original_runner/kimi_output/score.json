@@ -1,0 +1,229 @@
+{
+  "model": "kimi-k3",
+  "task": "GamingRoom__task5_recon",
+  "task_type": "task5_recon",
+  "finished": false,
+  "error": "max_steps reached",
+  "elapsed_sec": 666.1,
+  "num_steps": 35,
+  "headline": {
+    "primary_key": "obj_f@5%_nn",
+    "primary_dir": "up",
+    "primary": 0.1608595080106845,
+    "secondary": {
+      "scene_f@5%": 0.6565783739874044,
+      "obj_f@5%_matched": 0.1559550734093099,
+      "obj_f@5%": 0.1454509340504603,
+      "mean_pos_err": 1.4197604832594926
+    }
+  },
+  "score": {
+    "chamfer_aligned": 0.9927719065746611,
+    "f@2%": 0.36025514403292186,
+    "recall@2%": 0.259,
+    "prec@2%": 0.5915,
+    "f@5%": 0.6398690454294648,
+    "recall@5%": 0.51525,
+    "prec@5%": 0.844,
+    "f@10%": 0.8238753307850633,
+    "recall@10%": 0.7005,
+    "prec@10%": 1.0,
+    "n_pred": 209440,
+    "n_gt": 63865,
+    "gt_diag": 8.610116564881267,
+    "per_object": [
+      {
+        "part": "TV",
+        "n_pred_in": 0,
+        "chamfer": NaN,
+        "f@5%": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "covered": false
+      },
+      {
+        "part": "Sofa",
+        "n_pred_in": 2925,
+        "chamfer": 0.3846470277599208,
+        "f@5%": 0.5016685459133791,
+        "precision": 0.6471794871794871,
+        "recall": 0.4095793018656118,
+        "covered": true
+      },
+      {
+        "part": "Monitor_R",
+        "n_pred_in": 403,
+        "chamfer": 1.5082124715763137,
+        "f@5%": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "covered": false
+      },
+      {
+        "part": "Monitor_L",
+        "n_pred_in": 310,
+        "chamfer": 1.7397799477788012,
+        "f@5%": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "covered": false
+      },
+      {
+        "part": "Desk",
+        "n_pred_in": 970,
+        "chamfer": 0.6597950861071804,
+        "f@5%": 0.3192680141674677,
+        "precision": 0.3309278350515464,
+        "recall": 0.3084018670815737,
+        "covered": true
+      },
+      {
+        "part": "Chair",
+        "n_pred_in": 201,
+        "chamfer": 0.8724101976602321,
+        "f@5%": 0.19721997827237528,
+        "precision": 0.29850746268656714,
+        "recall": 0.14725457570715475,
+        "covered": false
+      },
+      {
+        "part": "Cabinet",
+        "n_pred_in": 0,
+        "chamfer": NaN,
+        "f@5%": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "covered": false
+      }
+    ],
+    "obj_f@5%": 0.1454509340504603,
+    "obj_recall@5%": 0.12360510637919146,
+    "mean_part_chamfer": 0.5222210569335506,
+    "mean_part_f@5%": 0.1454509340504603,
+    "object_coverage": 0.2857142857142857,
+    "per_object_matched": [
+      {
+        "part": "TV",
+        "matched": false,
+        "f@5%_matched": 0.0,
+        "pos_err": NaN,
+        "n_cluster_pts": 0
+      },
+      {
+        "part": "Sofa",
+        "matched": true,
+        "f@5%_matched": 0.36285748636542986,
+        "precision_matched": 0.5575815738963532,
+        "recall_matched": 0.2689367616400278,
+        "pos_err": 0.9109015199951176,
+        "n_cluster_pts": 1042
+      },
+      {
+        "part": "Monitor_R",
+        "matched": true,
+        "f@5%_matched": 0.3326401761477153,
+        "precision_matched": 0.2703087885985748,
+        "recall_matched": 0.43233333333333335,
+        "pos_err": 2.5061579038432886,
+        "n_cluster_pts": 2105
+      },
+      {
+        "part": "Monitor_L",
+        "matched": true,
+        "f@5%_matched": 0.07173694914211681,
+        "precision_matched": 0.054844606946983544,
+        "recall_matched": 0.10366666666666667,
+        "pos_err": 1.3421129192794359,
+        "n_cluster_pts": 547
+      },
+      {
+        "part": "Desk",
+        "matched": false,
+        "f@5%_matched": 0.0,
+        "pos_err": NaN,
+        "n_cluster_pts": 0
+      },
+      {
+        "part": "Chair",
+        "matched": true,
+        "f@5%_matched": 0.3244509022099074,
+        "precision_matched": 0.78,
+        "recall_matched": 0.2048252911813644,
+        "pos_err": 0.9198695899201279,
+        "n_cluster_pts": 200
+      },
+      {
+        "part": "Cabinet",
+        "matched": false,
+        "f@5%_matched": 0.0,
+        "pos_err": NaN,
+        "n_cluster_pts": 0
+      }
+    ],
+    "n_clusters": 4,
+    "match_eps": 0.2413338102474754,
+    "obj_f@5%_matched": 0.1559550734093099,
+    "mean_pos_err": 1.4197604832594926,
+    "match_rate": 0.5714285714285714,
+    "per_object_nn": [
+      {
+        "part": "TV",
+        "n_pred": 0,
+        "f@5%": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "part": "Sofa",
+        "n_pred": 152952,
+        "f@5%": 0.5533011193792524,
+        "precision": 0.6506028034939065,
+        "recall": 0.48131715400652164
+      },
+      {
+        "part": "Monitor_R",
+        "n_pred": 0,
+        "f@5%": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "part": "Monitor_L",
+        "n_pred": 0,
+        "f@5%": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "part": "Desk",
+        "n_pred": 47488,
+        "f@5%": 0.36345797953102227,
+        "precision": 0.3394752358490566,
+        "recall": 0.3910869082018226
+      },
+      {
+        "part": "Chair",
+        "n_pred": 9000,
+        "f@5%": 0.20925745716451666,
+        "precision": 0.27455555555555555,
+        "recall": 0.16905158069883527
+      },
+      {
+        "part": "Cabinet",
+        "n_pred": 0,
+        "f@5%": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    ],
+    "obj_f@5%_nn": 0.1608595080106845,
+    "obj_recall@5%_nn": 0.1487793775581685,
+    "scene_f@5%": 0.6565783739874044,
+    "scene_prec@5%": 0.8469442322383499,
+    "scene_recall@5%": 0.5360839270335864,
+    "pointbert_error": "ModuleNotFoundError(\"No module named '_openshape'\")",
+    "visual_error": "ModuleNotFoundError(\"No module named 'open_clip'\")",
+    "finished": false,
+    "error": "max_steps reached"
+  }
+}

@@ -1,0 +1,528 @@
+{
+  "id": "deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088__task5_recon",
+  "task_type": "task5_recon",
+  "scene_id": "deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088",
+  "scene_dir": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088",
+  "system_prompt": "You are a procedural 3D modeling expert. Given multiple reference images of an\nindoor scene (a room with a few pieces of furniture), you reconstruct EVERY furniture piece in\nBlender by writing bpy code, matching its geometry AND its visible color.\n\n# Input\n- N reference images of the SAME room from different camera viewpoints (each with a known camera\n  pose). Use them as multi-view evidence: cross-reference views to resolve depth, proportions,\n  occluded structure, and hidden sides.\n- The Blender scene starts EMPTY. The reference images are NOT available to your script at runtime.\n\n# Reading the references — do this carefully BEFORE you build\n1. Identify each furniture piece visible in any view. Count them.\n2. For each piece, infer:\n   - Category and characteristic shape.\n   - Overall dimensions (length × width × height) in METERS, calibrated against the room.\n   - Position and yaw (rotation about Z) in the world frame given the camera poses.\n   - Symmetries (bilateral / radial), repeating sub-parts (slats, drawers, legs, lamp shades).\n   - Distinctive ornament (panels, drawer pulls, mattress, pendant cords).\n3. When images give clear quantitative cues (e.g. \"4 legs\", \"3 drawers\", \"5 hanging cords\"),\n   reproduce those counts EXACTLY rather than approximating.\n4. Read the dominant Base Color of every piece so each gets the right material color.\n\n# Geometry quality bar\nFor each furniture piece, push for as much geometric detail as the reference shows. Compose\nmultiple primitives + bmesh edits + modifiers. Use bpy.ops.mesh.primitive_*_add for body shapes;\nuse bmesh operators (bevel / extrude / inset) to add edges and indents; use array / mirror\nmodifiers for repeating parts (legs, slats, drawers); exploit symmetry (mirror modifier) for\nbilateral pieces. Do not ship a single naked cube for a complex piece.\n\nKeep total mesh complexity under a few hundred thousand vertices. Build at real-world scale\n(meters), every piece sitting on the floor (lowest Z = 0). World is Z-up.\n\n# What NOT to build\n- NO room shell: no floor plane, no walls, no ceiling, no skirting boards, no windows, even\n  though the references show them. Furniture only.\n- NO decorative props (books, plants, pictures) unless they are unmistakably present and large.\n- DO NOT try to reproduce textures / patterns / fabric weave; only solid Base Color is required.\n\n# Materials\nFor every mesh object, attach a Principled BSDF material with the correct Base Color, e.g.:\n    mat = bpy.data.materials.new(\"m_bed_frame\"); mat.use_nodes = True\n    bsdf = next(n for n in mat.node_tree.nodes if n.type == \"BSDF_PRINCIPLED\")\n    bsdf.inputs[\"Base Color\"].default_value = (r, g, b, 1.0)\n    obj.data.materials.append(mat)\nSet roughness ≈ 0.7 and metallic = 0 by default (override only when clearly metal/glossy).\n\n# How to place pieces\nSet the FULL world matrix (T @ R) — rotation_euler/location piecemeal can fail under MCP:\n    import bpy, mathutils\n    obj = bpy.data.objects[\"bed\"]\n    T = mathutils.Matrix.Translation((x, y, z))\n    R = mathutils.Matrix.Rotation(yaw_radians, 4, 'Z')\n    obj.matrix_world = T @ R\n\n# Workflow — iterate until satisfied\nBuild the scene with execute_blender_code, then call render_scene_view at one or more reference\ncamera poses. Compare each render to the corresponding reference image at the SAME camera angle,\nwalking through this priority list (in this order):\n\n  1. MISSING PIECES — components in the reference that you did not build at all.\n  2. WRONG SILHOUETTE / overall shape of an existing piece.\n  3. WRONG PROPORTIONS / size — sizes or aspect ratios visibly disagree with the reference.\n  4. WRONG COUNT of repeating parts — legs, drawers, lamp shades, hanging cords.\n  5. MISALIGNMENT / FLOATING / wrong yaw.\n  6. MISSING GEOMETRIC DETAIL — flat where the reference shows ribs / panels / drawer fronts /\n     pleats / multiple lamp shades / etc.\n  7. WRONG COLOR — Base Color visibly off vs the reference.\n\nIf any priority-1..6 item is clearly wrong, fix it with execute_blender_code, render again, and\nre-evaluate. Stop when no priority-1..6 issue remains and priority-7 is at most \"minor color\ndrift\". You decide when it is good enough — you have a limited step budget, but use it.\n\n# Conservatism bias\nEach fix risks breaking working code. If a piece is recognizably correct and the only differences\nare minor proportions or color, leave it alone. Do not rewrite working pieces every round.\n\nWhen you stop, give a one-paragraph summary of what you built and any remaining differences from\nthe reference. Do NOT ask clarifying questions; if references are ambiguous, choose reasonable\ndefaults consistent with the visible views and the object category.\n\n# Grading you'll be measured on\n- Per-object f-score and Chamfer (geometry accuracy after global + local alignment).\n- Per-object PointBERT cosine (3D semantic similarity — does it look like the right object).\n- Per-object position error.\n- Multi-view rendered visual fidelity (MSSIM / CLIP / LPIPS) against the references.\nYou get NO points for rooms, walls, or decorations; you get points for accurate furniture.",
+  "prompt": "Reconstruct this indoor scene in 3D from 11 reference images of the SAME ROOM taken from different camera viewpoints (Blender starts empty).\n\nWorld frame: Z-up, meters. fov_x = 39.6 deg.\n\nReference images and their camera poses (each in the same world frame):\n  - view 0: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0000.webp\n      cam pos = [-0.2441, -6.2224, 1.426], look_dir = [0.0, 1.0, 0.0], up = [0.0, -0.0, 1.0]\n  - view 1: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0001.webp\n      cam pos = [-0.2441, -6.1278, 2.5065], look_dir = [0.0, 0.9848, -0.1736], up = [0.0, 0.1736, 0.9848]\n  - view 2: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0002.webp\n      cam pos = [-0.2441, -5.8471, 3.5541], look_dir = [0.0, 0.9397, -0.342], up = [0.0, 0.342, 0.9397]\n  - view 3: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0003.webp\n      cam pos = [-4.644, -4.3999, 1.426], look_dir = [0.7071, 0.7071, 0.0], up = [-0.0, -0.0, 1.0]\n  - view 4: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0004.webp\n      cam pos = [-1.8546, -6.0103, 1.426], look_dir = [0.2588, 0.9659, 0.0], up = [-0.0, -0.0, 1.0]\n  - view 5: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0005.webp\n      cam pos = [1.3664, -6.0103, 1.426], look_dir = [-0.2588, 0.9659, 0.0], up = [0.0, -0.0, 1.0]\n  - view 6: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0006.webp\n      cam pos = [-4.5771, -4.333, 2.5065], look_dir = [0.6964, 0.6964, -0.1736], up = [0.1228, 0.1228, 0.9848]\n  - view 7: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0007.webp\n      cam pos = [-1.8301, -5.919, 2.5065], look_dir = [0.2549, 0.9513, -0.1736], up = [0.0449, 0.1677, 0.9848]\n  - view 8: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0008.webp\n      cam pos = [1.3419, -5.919, 2.5065], look_dir = [-0.2549, 0.9513, -0.1736], up = [-0.0449, 0.1677, 0.9848]\n  - view 9: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0009.webp\n      cam pos = [4.0889, -4.333, 2.5065], look_dir = [-0.6964, 0.6964, -0.1736], up = [-0.1228, 0.1228, 0.9848]\n  - view 10: /tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0010.webp\n      cam pos = [-3.1677, -5.0637, 3.5541], look_dir = [0.4698, 0.8138, -0.342], up = [0.171, 0.2962, 0.9397]\n\nTreat the 11 images as MULTI-VIEW evidence of one room (not separate rooms). Cross-reference them to resolve depth, hidden sides, and exact furniture positions.\n\nStep 1 — IDENTIFY every furniture piece visible in any view (bed, wardrobe, nightstand, pendant lamp, dresser, ...). Count them. Read the dominant Base Color of each piece.\nStep 2 — For each piece, infer its real-world size (m), world position (x,y,z) and yaw (radians about Z), then plan the geometry: which primitives + bmesh edits + modifiers (mirror/array) you'll use to capture the silhouette and repeating parts.\nStep 3 — BUILD with execute_blender_code: create geometry + materials, set obj.matrix_world = T @ R for placement.\nStep 4 — RENDER each piece's appearance with render_scene_view at the SAME camera poses listed above; compare to the reference views by priority (missing pieces > silhouette > proportions > count of repeating parts > misalignment > detail > color); fix and re-render until the room matches.\n  Also create EXTRA cameras at other angles (e.g. a top-down view and a side view) and render_scene_view from them — the reference poses are 2D projections, so depth errors and objects floating / sunk into the floor only show from other angles. Verify the 3D layout, not just the reference silhouette.\nStep 5 — Stop when satisfied; do not ask questions.\n\nREMINDERS:\n  - Furniture only. NO floor / walls / ceiling / windows / decorations.\n  - Real-world meters; lowest Z = 0; do NOT rescale objects after placement.\n  - Reproduce exact counts (legs, drawers, hanging cords) when visible.\n  - Use bmesh / mirror / array modifiers for detail and repeating parts; do not ship naked cubes for complex pieces.",
+  "setup_code": "import bpy\nbpy.ops.object.select_all(action='SELECT')\nbpy.ops.object.delete(use_global=False)\nfor _coll in (bpy.data.meshes, bpy.data.materials, bpy.data.lights, bpy.data.cameras):\n    for _b in list(_coll): _coll.remove(_b)",
+  "references": [
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0000.webp",
+      "camera": {
+        "position": [
+          -0.2441,
+          -6.2224,
+          1.426
+        ],
+        "look_dir": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "up": [
+          0.0,
+          -0.0,
+          1.0
+        ],
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            -0.0,
+            -0.244107
+          ],
+          [
+            -0.0,
+            -0.0,
+            -1.0,
+            -6.222361
+          ],
+          [
+            -0.0,
+            1.0,
+            -0.0,
+            1.425956
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    },
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0001.webp",
+      "camera": {
+        "position": [
+          -0.2441,
+          -6.1278,
+          2.5065
+        ],
+        "look_dir": [
+          0.0,
+          0.9848,
+          -0.1736
+        ],
+        "up": [
+          0.0,
+          0.1736,
+          0.9848
+        ],
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            -0.0,
+            -0.244107
+          ],
+          [
+            -0.0,
+            0.173648,
+            -0.984808,
+            -6.127829
+          ],
+          [
+            0.0,
+            0.984808,
+            0.173648,
+            2.506458
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    },
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0002.webp",
+      "camera": {
+        "position": [
+          -0.2441,
+          -5.8471,
+          3.5541
+        ],
+        "look_dir": [
+          0.0,
+          0.9397,
+          -0.342
+        ],
+        "up": [
+          0.0,
+          0.342,
+          0.9397
+        ],
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            -0.0,
+            -0.244107
+          ],
+          [
+            -0.0,
+            0.34202,
+            -0.939693,
+            -5.847106
+          ],
+          [
+            0.0,
+            0.939693,
+            0.34202,
+            3.554128
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    },
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0003.webp",
+      "camera": {
+        "position": [
+          -4.644,
+          -4.3999,
+          1.426
+        ],
+        "look_dir": [
+          0.7071,
+          0.7071,
+          0.0
+        ],
+        "up": [
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "matrix_world": [
+          [
+            0.707107,
+            -0.0,
+            -0.707107,
+            -4.64398
+          ],
+          [
+            -0.707107,
+            -0.0,
+            -0.707107,
+            -4.399873
+          ],
+          [
+            -0.0,
+            1.0,
+            -0.0,
+            1.425956
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    },
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0004.webp",
+      "camera": {
+        "position": [
+          -1.8546,
+          -6.0103,
+          1.426
+        ],
+        "look_dir": [
+          0.2588,
+          0.9659,
+          0.0
+        ],
+        "up": [
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "matrix_world": [
+          [
+            0.965926,
+            -0.0,
+            -0.258819,
+            -1.854572
+          ],
+          [
+            -0.258819,
+            -0.0,
+            -0.965926,
+            -6.010338
+          ],
+          [
+            -0.0,
+            1.0,
+            -0.0,
+            1.425956
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    },
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0005.webp",
+      "camera": {
+        "position": [
+          1.3664,
+          -6.0103,
+          1.426
+        ],
+        "look_dir": [
+          -0.2588,
+          0.9659,
+          0.0
+        ],
+        "up": [
+          0.0,
+          -0.0,
+          1.0
+        ],
+        "matrix_world": [
+          [
+            0.965926,
+            0.0,
+            0.258819,
+            1.366358
+          ],
+          [
+            0.258819,
+            -0.0,
+            -0.965926,
+            -6.010338
+          ],
+          [
+            0.0,
+            1.0,
+            -0.0,
+            1.425956
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    },
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0006.webp",
+      "camera": {
+        "position": [
+          -4.5771,
+          -4.333,
+          2.5065
+        ],
+        "look_dir": [
+          0.6964,
+          0.6964,
+          -0.1736
+        ],
+        "up": [
+          0.1228,
+          0.1228,
+          0.9848
+        ],
+        "matrix_world": [
+          [
+            0.707107,
+            0.122788,
+            -0.696364,
+            -4.577136
+          ],
+          [
+            -0.707107,
+            0.122788,
+            -0.696364,
+            -4.333029
+          ],
+          [
+            -0.0,
+            0.984808,
+            0.173648,
+            2.506458
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    },
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0007.webp",
+      "camera": {
+        "position": [
+          -1.8301,
+          -5.919,
+          2.5065
+        ],
+        "look_dir": [
+          0.2549,
+          0.9513,
+          -0.1736
+        ],
+        "up": [
+          0.0449,
+          0.1677,
+          0.9848
+        ],
+        "matrix_world": [
+          [
+            0.965926,
+            0.044943,
+            -0.254887,
+            -1.830106
+          ],
+          [
+            -0.258819,
+            0.167731,
+            -0.951251,
+            -5.919028
+          ],
+          [
+            -0.0,
+            0.984808,
+            0.173648,
+            2.506458
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    },
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0008.webp",
+      "camera": {
+        "position": [
+          1.3419,
+          -5.919,
+          2.5065
+        ],
+        "look_dir": [
+          -0.2549,
+          0.9513,
+          -0.1736
+        ],
+        "up": [
+          -0.0449,
+          0.1677,
+          0.9848
+        ],
+        "matrix_world": [
+          [
+            0.965926,
+            -0.044943,
+            0.254887,
+            1.341892
+          ],
+          [
+            0.258819,
+            0.167731,
+            -0.951251,
+            -5.919028
+          ],
+          [
+            0.0,
+            0.984808,
+            0.173648,
+            2.506458
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    },
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0009.webp",
+      "camera": {
+        "position": [
+          4.0889,
+          -4.333,
+          2.5065
+        ],
+        "look_dir": [
+          -0.6964,
+          0.6964,
+          -0.1736
+        ],
+        "up": [
+          -0.1228,
+          0.1228,
+          0.9848
+        ],
+        "matrix_world": [
+          [
+            0.707107,
+            -0.122788,
+            0.696364,
+            4.088922
+          ],
+          [
+            0.707107,
+            0.122788,
+            -0.696364,
+            -4.333029
+          ],
+          [
+            0.0,
+            0.984808,
+            0.173648,
+            2.506458
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    },
+    {
+      "image": "/tmp/bench3d/dataset/benchmark_final/scenes/deaa4ac0-8d13-423f-930f-78fb25825e8d_Bedroom-5088/render/render_0010.webp",
+      "camera": {
+        "position": [
+          -3.1677,
+          -5.0637,
+          3.5541
+        ],
+        "look_dir": [
+          0.4698,
+          0.8138,
+          -0.342
+        ],
+        "up": [
+          0.171,
+          0.2962,
+          0.9397
+        ],
+        "matrix_world": [
+          [
+            0.866025,
+            0.17101,
+            -0.469846,
+            -3.16766
+          ],
+          [
+            -0.5,
+            0.296198,
+            -0.813798,
+            -5.063743
+          ],
+          [
+            0.0,
+            0.939693,
+            0.34202,
+            3.554128
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fov_x_deg": 39.6
+      }
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "name": "living-room",
+  "title": "Living room",
+  "source": "InteriorTest.blend",
+  "golden_file": "InteriorLiving_full.glb",
+  "units_to_metres": 1.0,
+  "origin": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "items": {
+    "Sofa": [
+      "Sofa*"
+    ],
+    "Table": [
+      "Meja",
+      "TiangMeja*"
+    ],
+    "Shelf": [
+      "Cube.00[4-9]",
+      "Kerangka*"
+    ],
+    "Piano": [
+      "Piano"
+    ],
+    "Bench": [
+      "Bangku",
+      "Atas Bangku"
+    ],
+    "TV_Stand": [
+      "Cube.011"
+    ],
+    "TV": [
+      "TV"
+    ],
+    "Lamp_Arc": [
+      "BezierCurve",
+      "StandingLamp.001",
+      "UnderStandingLamp",
+      "Lamp.001"
+    ],
+    "Lamp_Standing": [
+      "StandingLamp",
+      "TopStandingLamp",
+      "Lamp"
+    ],
+    "Pendant": [
+      "Sphere*",
+      "Cylinder.*"
+    ],
+    "Plant": [
+      "Tree",
+      "Tree Branch*",
+      "Pot"
+    ]
+  },
+  "colors": {
+    "Sofa": [
+      0.55,
+      0.55,
+      0.58
+    ],
+    "Table": [
+      0.75,
+      0.85,
+      0.9
+    ],
+    "Shelf": [
+      0.45,
+      0.3,
+      0.18
+    ],
+    "Piano": [
+      0.05,
+      0.05,
+      0.05
+    ],
+    "Bench": [
+      0.4,
+      0.28,
+      0.18
+    ],
+    "TV_Stand": [
+      0.35,
+      0.25,
+      0.16
+    ],
+    "TV": [
+      0.08,
+      0.08,
+      0.1
+    ],
+    "Lamp_Arc": [
+      0.7,
+      0.7,
+      0.72
+    ],
+    "Lamp_Standing": [
+      0.7,
+      0.7,
+      0.72
+    ],
+    "Pendant": [
+      0.9,
+      0.88,
+      0.8
+    ],
+    "Plant": [
+      0.2,
+      0.45,
+      0.2
+    ]
+  },
+  "cameras": [
+    {
+      "position": [
+        -5.6,
+        -6.2,
+        2.4
+      ],
+      "target": [
+        0.0,
+        0.6,
+        0.7
+      ]
+    },
+    {
+      "position": [
+        5.6,
+        -6.2,
+        2.4
+      ],
+      "target": [
+        0.0,
+        0.6,
+        0.7
+      ]
+    },
+    {
+      "position": [
+        5.4,
+        7.0,
+        2.6
+      ],
+      "target": [
+        0.0,
+        0.6,
+        0.7
+      ]
+    }
+  ],
+  "notes": "Downloaded InteriorTest.blend (Indonesian object names: Meja=table, Bangku=bench, Lemari/Kerangka=shelf). Room shell, decor, carpet and the two corner bushes are left out. Textures were missing from the download, so colours are set by hand."
+}

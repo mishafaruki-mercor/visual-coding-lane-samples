@@ -1,0 +1,119 @@
+{
+  "name": "gaming-room",
+  "title": "Gaming room",
+  "source": "gaming_room.blend",
+  "golden_file": "GamingRoom_full.glb",
+  "units_to_metres": 0.3048,
+  "origin": [
+    70.14,
+    45.29,
+    0.16
+  ],
+  "items": {
+    "Desk": [
+      "Cube.01[5-8]",
+      "Cylinder.00[1-8]"
+    ],
+    "Monitor_L": [
+      "Stand",
+      "Plane.013"
+    ],
+    "Monitor_R": [
+      "Stand.001",
+      "Plane.012"
+    ],
+    "Chair": [
+      "Plane.00[1-4]",
+      "Plane.00[789]",
+      "Plane.010",
+      "Cylinder.01[5-8]"
+    ],
+    "Sofa": [
+      "Cube",
+      "Cube.00[23]"
+    ],
+    "Cabinet": [
+      "Cube.004"
+    ],
+    "TV": [
+      "Plane.014",
+      "Plane.016"
+    ]
+  },
+  "colors": {
+    "Desk": [
+      0.12,
+      0.12,
+      0.14
+    ],
+    "Monitor_L": [
+      0.05,
+      0.05,
+      0.06
+    ],
+    "Monitor_R": [
+      0.05,
+      0.05,
+      0.06
+    ],
+    "Chair": [
+      0.6,
+      0.08,
+      0.08
+    ],
+    "Sofa": [
+      0.25,
+      0.3,
+      0.4
+    ],
+    "Cabinet": [
+      0.85,
+      0.85,
+      0.82
+    ],
+    "TV": [
+      0.1,
+      0.1,
+      0.12
+    ]
+  },
+  "cameras": [
+    {
+      "position": [
+        -7.161361,
+        -9.738219,
+        4.547602
+      ],
+      "target": [
+        0.2,
+        0.3,
+        0.8
+      ]
+    },
+    {
+      "position": [
+        10.76832,
+        -6.3052,
+        4.498912
+      ],
+      "target": [
+        0.2,
+        0.3,
+        0.8
+      ]
+    },
+    {
+      "position": [
+        -7.551702,
+        9.989628,
+        4.675851
+      ],
+      "target": [
+        0.2,
+        0.3,
+        0.8
+      ]
+    }
+  ],
+  "notes": "Downloaded gaming_room.blend, modelled in feet (units_to_metres 0.3048) around (70.14, 45.29). Figures, speaker, keyboard, ceiling lights, small wall items, room shell and two stray far-away objects are left out. Textures were missing, so colours are set by hand."
+}

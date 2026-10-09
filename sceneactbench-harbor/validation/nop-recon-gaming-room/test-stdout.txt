@@ -1,0 +1,3 @@
+[export] live Blender: ConnectionRefusedError(111, 'Connection refused')
+[export] no scene found (no meshes in Blender and no saved scene)
+{"reward": 0.0, "error": "FileNotFoundError('no agent scene to score')"}

@@ -1,0 +1,89 @@
+{
+ "reward": 1.0,
+ "headline_obj_f@5%_nn": 1.0,
+ "per_object": [
+  {
+   "part": "TV_Stand",
+   "n_pred": 6375,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "TV",
+   "n_pred": 3000,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Table",
+   "n_pred": 3000,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Sofa",
+   "n_pred": 23855,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Shelf",
+   "n_pred": 16560,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Plant",
+   "n_pred": 3000,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Piano",
+   "n_pred": 6516,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Pendant",
+   "n_pred": 3000,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Lamp_Standing",
+   "n_pred": 3000,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Lamp_Arc",
+   "n_pred": 3000,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Bench",
+   "n_pred": 3990,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  }
+ ],
+ "scene_f@5%": 1.0,
+ "scene_precision@5%": 1.0,
+ "scene_recall@5%": 1.0,
+ "scene_f@10%": 1.0,
+ "mean_pos_err_m": 0.43664783626745085,
+ "legacy_obj_f@5%_matched": 0.5391154869089134
+}

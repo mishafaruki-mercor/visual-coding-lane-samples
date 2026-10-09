@@ -1,0 +1,61 @@
+{
+ "reward": 1.0,
+ "headline_obj_f@5%_nn": 1.0,
+ "per_object": [
+  {
+   "part": "TV",
+   "n_pred": 6468,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Sofa",
+   "n_pred": 18707,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Monitor_R",
+   "n_pred": 2977,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Monitor_L",
+   "n_pred": 3020,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Desk",
+   "n_pred": 17999,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Chair",
+   "n_pred": 6010,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  {
+   "part": "Cabinet",
+   "n_pred": 8684,
+   "f@5%": 1.0,
+   "precision": 1.0,
+   "recall": 1.0
+  }
+ ],
+ "scene_f@5%": 1.0,
+ "scene_precision@5%": 1.0,
+ "scene_recall@5%": 1.0,
+ "scene_f@10%": 1.0,
+ "mean_pos_err_m": 0.0678069063345705,
+ "legacy_obj_f@5%_matched": 0.6622025669860496
+}

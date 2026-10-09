@@ -1,0 +1,315 @@
+{
+ "chamfer_aligned": 0.9058759919937212,
+ "f@2%": 0.2528331137461572,
+ "recall@2%": 0.1895,
+ "prec@2%": 0.37975,
+ "f@5%": 0.5430523690773067,
+ "recall@5%": 0.414,
+ "prec@5%": 0.789,
+ "f@10%": 0.7918467532467532,
+ "recall@10%": 0.6715,
+ "prec@10%": 0.96475,
+ "n_pred": 309792,
+ "n_gt": 75296,
+ "gt_diag": 8.352207593101406,
+ "per_object": [
+  {
+   "part": "TV_Stand",
+   "n_pred_in": 187,
+   "chamfer": 1.95550153004555,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "covered": false
+  },
+  {
+   "part": "TV",
+   "n_pred_in": 0,
+   "chamfer": NaN,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "covered": false
+  },
+  {
+   "part": "Table",
+   "n_pred_in": 1024,
+   "chamfer": 0.9113150544089568,
+   "f@5%": 0.02742012398664759,
+   "precision": 0.01953125,
+   "recall": 0.046,
+   "covered": false
+  },
+  {
+   "part": "Sofa",
+   "n_pred_in": 3003,
+   "chamfer": 1.0049982270700994,
+   "f@5%": 0.28616236288123353,
+   "precision": 0.2490842490842491,
+   "recall": 0.3362097855227882,
+   "covered": false
+  },
+  {
+   "part": "Shelf",
+   "n_pred_in": 1286,
+   "chamfer": 1.0407252995563216,
+   "f@5%": 0.14667247333055347,
+   "precision": 0.2698289269051322,
+   "recall": 0.1007072477785166,
+   "covered": false
+  },
+  {
+   "part": "Plant",
+   "n_pred_in": 1592,
+   "chamfer": 0.8632958262847246,
+   "f@5%": 0.08775899023577041,
+   "precision": 0.08417085427135679,
+   "recall": 0.09166666666666666,
+   "covered": false
+  },
+  {
+   "part": "Piano",
+   "n_pred_in": 155,
+   "chamfer": 1.0642844796666644,
+   "f@5%": 0.007467211283785941,
+   "precision": 0.05806451612903226,
+   "recall": 0.003990178023327195,
+   "covered": false
+  },
+  {
+   "part": "Pendant",
+   "n_pred_in": 480,
+   "chamfer": 2.054534450045382,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "covered": false
+  },
+  {
+   "part": "Lamp_Standing",
+   "n_pred_in": 2,
+   "chamfer": NaN,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "covered": false
+  },
+  {
+   "part": "Lamp_Arc",
+   "n_pred_in": 685,
+   "chamfer": 0.7329635559192523,
+   "f@5%": 0.11080841413598105,
+   "precision": 0.07007299270072993,
+   "recall": 0.26466666666666666,
+   "covered": false
+  },
+  {
+   "part": "Bench",
+   "n_pred_in": 656,
+   "chamfer": 0.384610310931888,
+   "f@5%": 0.2949332187859443,
+   "precision": 0.2850609756097561,
+   "recall": 0.3055137844611529,
+   "covered": false
+  }
+ ],
+ "obj_f@5%": 0.08738389042181058,
+ "obj_recall@5%": 0.10443221173810163,
+ "mean_part_chamfer": NaN,
+ "mean_part_f@5%": 0.08738389042181058,
+ "object_coverage": 0.0,
+ "per_object_matched": [
+  {
+   "part": "TV_Stand",
+   "matched": true,
+   "f@5%_matched": 0.3726839831081412,
+   "precision_matched": 0.5497835497835498,
+   "recall_matched": 0.2818823529411765,
+   "pos_err": 1.686104477738269,
+   "n_cluster_pts": 231
+  },
+  {
+   "part": "TV",
+   "matched": true,
+   "f@5%_matched": 0.2282174537885921,
+   "precision_matched": 0.8285714285714286,
+   "recall_matched": 0.13233333333333333,
+   "pos_err": 3.355567074888555,
+   "n_cluster_pts": 70
+  },
+  {
+   "part": "Table",
+   "matched": true,
+   "f@5%_matched": 0.26514803082059046,
+   "precision_matched": 0.6240786240786241,
+   "recall_matched": 0.16833333333333333,
+   "pos_err": 0.35215531246819887,
+   "n_cluster_pts": 407
+  },
+  {
+   "part": "Sofa",
+   "matched": true,
+   "f@5%_matched": 0.03805796921406371,
+   "precision_matched": 0.7553191489361702,
+   "recall_matched": 0.01952077747989276,
+   "pos_err": 0.4609184425066822,
+   "n_cluster_pts": 94
+  },
+  {
+   "part": "Shelf",
+   "matched": true,
+   "f@5%_matched": 0.20204325616780786,
+   "precision_matched": 1.0,
+   "recall_matched": 0.11237381369763647,
+   "pos_err": 1.4181996167906132,
+   "n_cluster_pts": 237
+  },
+  {
+   "part": "Plant",
+   "matched": true,
+   "f@5%_matched": 0.20863533523905003,
+   "precision_matched": 0.1757469244288225,
+   "recall_matched": 0.25666666666666665,
+   "pos_err": 1.089148285751107,
+   "n_cluster_pts": 569
+  },
+  {
+   "part": "Piano",
+   "matched": true,
+   "f@5%_matched": 0.006720840716075029,
+   "precision_matched": 0.7142857142857143,
+   "recall_matched": 0.003376304481276857,
+   "pos_err": 0.3949426273731119,
+   "n_cluster_pts": 42
+  },
+  {
+   "part": "Pendant",
+   "matched": true,
+   "f@5%_matched": 0.17554167030559018,
+   "precision_matched": 0.1558073654390935,
+   "recall_matched": 0.201,
+   "pos_err": 1.465238653019988,
+   "n_cluster_pts": 706
+  },
+  {
+   "part": "Lamp_Standing",
+   "matched": true,
+   "f@5%_matched": 0.5063590639904056,
+   "precision_matched": 0.782258064516129,
+   "recall_matched": 0.37433333333333335,
+   "pos_err": 1.4343460530334506,
+   "n_cluster_pts": 124
+  },
+  {
+   "part": "Lamp_Arc",
+   "matched": true,
+   "f@5%_matched": 0.13743893882630165,
+   "precision_matched": 0.08504398826979472,
+   "recall_matched": 0.358,
+   "pos_err": 0.2883453608451007,
+   "n_cluster_pts": 682
+  },
+  {
+   "part": "Bench",
+   "matched": true,
+   "f@5%_matched": 0.2711322643530796,
+   "precision_matched": 0.2630744849445325,
+   "recall_matched": 0.2796992481203007,
+   "pos_err": 0.21811339710580713,
+   "n_cluster_pts": 631
+  }
+ ],
+ "n_clusters": 12,
+ "match_eps": 0.33248504406755053,
+ "obj_f@5%_matched": 0.21927080059360887,
+ "mean_pos_err": 1.105734481956444,
+ "match_rate": 1.0,
+ "per_object_nn": [
+  {
+   "part": "TV_Stand",
+   "n_pred": 4479,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "part": "TV",
+   "n_pred": 0,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "part": "Table",
+   "n_pred": 38831,
+   "f@5%": 0.05791875991966863,
+   "precision": 0.04730756354459066,
+   "recall": 0.07466666666666667
+  },
+  {
+   "part": "Sofa",
+   "n_pred": 89294,
+   "f@5%": 0.4650101495624019,
+   "precision": 0.6408045333393061,
+   "recall": 0.364904490616622
+  },
+  {
+   "part": "Shelf",
+   "n_pred": 53929,
+   "f@5%": 0.17636581190405645,
+   "precision": 0.4813551150586883,
+   "recall": 0.10796107114791754
+  },
+  {
+   "part": "Plant",
+   "n_pred": 20637,
+   "f@5%": 0.186276000653668,
+   "precision": 0.46712215922857003,
+   "recall": 0.11633333333333333
+  },
+  {
+   "part": "Piano",
+   "n_pred": 13719,
+   "f@5%": 0.009124285245461702,
+   "precision": 0.03630002186748305,
+   "recall": 0.0052179251074278695
+  },
+  {
+   "part": "Pendant",
+   "n_pred": 0,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "part": "Lamp_Standing",
+   "n_pred": 0,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "part": "Lamp_Arc",
+   "n_pred": 39544,
+   "f@5%": 0.15118652771230384,
+   "precision": 0.09561501112684605,
+   "recall": 0.361
+  },
+  {
+   "part": "Bench",
+   "n_pred": 49359,
+   "f@5%": 0.3566491074348581,
+   "precision": 0.28967361575396583,
+   "recall": 0.4639097744360902
+  }
+ ],
+ "obj_f@5%_nn": 0.1275027856756744,
+ "obj_recall@5%_nn": 0.13581756920982344,
+ "scene_f@5%": 0.5589073272723905,
+ "scene_prec@5%": 0.8046463433529594,
+ "scene_recall@5%": 0.4281502337441564,
+ "pointbert_error": "ModuleNotFoundError(\"No module named '_openshape'\")",
+ "visual_error": "ModuleNotFoundError(\"No module named 'open_clip'\")",
+ "finished": false,
+ "error": "max_steps reached"
+}
