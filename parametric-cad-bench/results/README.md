@@ -10,8 +10,8 @@ results/
                            rollout1/, comparison.png, README.md
     hand-cannon-image/     Kimi K3, 3 rollouts: 0.035, 0.887, 0.034 (average 0.319)
                            rollout1/ (partial; see below), rollout2/, rollout3/, comparison.png, README.md
-    tray-bracket-image/    Kimi K3, 2 rollouts: 0.259, 0.047 (average 0.153)
-                           rollout1/ (partial; see below), rollout2/, comparison.png, README.md
+    tray-bracket-image/    Kimi K3, 3 rollouts: 0.259, 0.047, 0.144 (average 0.150)
+                           rollout1/ (partial; see below), rollout2/, rollout3/, comparison.png, README.md
 ```
 
 Each `kimi-k3/<task>/` folder has one `rolloutN/` folder per Kimi K3 run (the Harbor job files plus the trial folder), a `comparison.png` showing the reference, each rollout's model and its difference from the reference, and a README with the per-rollout scores and what went wrong.
@@ -22,7 +22,7 @@ Each `kimi-k3/<task>/` folder has one `rolloutN/` folder per Kimi K3 run (the Ha
 |---|---|---|
 | Agent | `oracle` (runs `solution/solve.sh`) | mini-swe-agent 2.4.6, reasoning effort `max`, CAD Bench v3 leaderboard multimodal config |
 | Model | n/a | `moonshotai/kimi-k3` through the Vercel AI Gateway |
-| Attempts | 1 per task | Lobed rotor 1, hand cannon 3, tray bracket 2 rollouts (see each `kimi-k3/<task>/README.md`) |
+| Attempts | 1 per task | Lobed rotor 1, hand cannon 3, tray bracket 3 rollouts (see each `kimi-k3/<task>/README.md`) |
 | Command | `harbor run -p . -a oracle` | see each job's `config.json` |
 
 The Kimi K3 runs were made on the same tasks under earlier working names: `lobed-rotor-image`, `hand-cannon-v2-image` and `tray-bracket-image-v3`. Those use the same instruction, drawing, verifier, spec and reference as the tasks in this repo. The only differences were the name and a `--platform=linux/amd64` line in the Dockerfiles, which was needed to run on a Mac.
