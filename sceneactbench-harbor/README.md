@@ -56,7 +56,6 @@ tasks/recon-<name>/        the Harbor tasks (what you run)
 agents/sceneactbench_agent/ Harbor agent: the SceneActBench loop, for OpenAI-compatible models
 results/kimi-k3/            Kimi K3 rollouts on the two samples: scores, before/after pictures, 3D scenes
 samples/<name>/            the source Blender scene each task was made from (reference only)
-docs/SCENEACTBENCH_OVERVIEW.md  benchmark description, scoring details, quality checklist
 validation/                 oracle / nop check results for the shipped tasks
 ```
 
@@ -85,7 +84,6 @@ key scored only 18–24 / 100:
 - items are matched by nearest surface instead of clustering, which merged touching furniture;
 - every item in the answer key is scored, with no name filter.
 
-Details: [`docs/SCENEACTBENCH_OVERVIEW.md`](docs/SCENEACTBENCH_OVERVIEW.md).
 
 ## Notes
 - The image is `linux/amd64` because Blender only ships x64 Linux builds. On Apple Silicon it runs under
