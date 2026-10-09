@@ -1,4 +1,4 @@
-# Benchmarks
+# Visual Coding Lane Samples
 
 Combined repository of three benchmark projects. Each lives in its own folder with full commit history preserved.
 
