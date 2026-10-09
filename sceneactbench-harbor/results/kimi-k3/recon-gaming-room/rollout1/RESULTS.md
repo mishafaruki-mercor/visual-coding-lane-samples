@@ -1,4 +1,4 @@
-# recon-gaming-room — Kimi K3
+# recon-gaming-room — Kimi K3 — rollout1
 
 **Reward: 0.121** (per-object F@5%, average over golden items) · golden solution: 1.000
 

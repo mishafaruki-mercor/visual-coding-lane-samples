@@ -9,13 +9,13 @@ hidden 3D answer key. Scoring is pure geometry, with no LLM judge.
 
 ## Samples
 
-| Task | Room | Items | Golden solution | Kimi K3 (Harbor) |
+| Task | Room | Items | Golden solution | Kimi K3 (avg of 3 rollouts) |
 |---|---|---|---|---|
-| `tasks/recon-living-room` | Living room (`samples/living-room`) | 11 | 1.000 | **0.136** |
-| `tasks/recon-gaming-room` | Gaming room (`samples/gaming-room`) | 7 | 1.000 | **0.121** |
+| `tasks/recon-living-room` | Living room (`samples/living-room`) | 11 | 1.000 | **0.109** (0.136 / 0.112 / 0.080) |
+| `tasks/recon-gaming-room` | Gaming room (`samples/gaming-room`) | 7 | 1.000 | **0.212** (0.121 / 0.190 / 0.325) |
 
-Reward = average per-item F-score (0–1). Before/after pictures and per-item scores: [`results/`](results/README.md).
-Single runs vary: Kimi K3 has scored 0.121, 0.161 and 0.273 on the gaming room across three runs.
+Reward = average per-item F-score (0–1). Kimi K3 averages **0.161** across all 6 rollouts. Before/after pictures,
+per-rollout and per-item scores: [`results/`](results/README.md).
 
 ## Quick start: run a task
 

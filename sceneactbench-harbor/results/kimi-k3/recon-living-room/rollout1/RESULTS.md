@@ -1,4 +1,4 @@
-# recon-living-room — Kimi K3
+# recon-living-room — Kimi K3 — rollout1
 
 **Reward: 0.136** (per-object F@5%, average over golden items) · golden solution: 1.000
 

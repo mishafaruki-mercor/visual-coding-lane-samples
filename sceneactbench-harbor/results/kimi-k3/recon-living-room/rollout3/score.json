@@ -1,0 +1,89 @@
+{
+ "reward": 0.0802973985205895,
+ "headline_obj_f@5%_nn": 0.0802973985205895,
+ "per_object": [
+  {
+   "part": "TV_Stand",
+   "n_pred": 20384,
+   "f@5%": 0.13906243344708147,
+   "precision": 0.10694662480376767,
+   "recall": 0.1987450980392157
+  },
+  {
+   "part": "TV",
+   "n_pred": 183,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "part": "Table",
+   "n_pred": 1612,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "part": "Sofa",
+   "n_pred": 27458,
+   "f@5%": 0.406936985553381,
+   "precision": 0.7559545487653871,
+   "recall": 0.2784014745308311
+  },
+  {
+   "part": "Shelf",
+   "n_pred": 13739,
+   "f@5%": 0.24819551780868088,
+   "precision": 0.4987262537302569,
+   "recall": 0.16520582723810676
+  },
+  {
+   "part": "Plant",
+   "n_pred": 6000,
+   "f@5%": 0.03372035398230088,
+   "precision": 0.07216666666666667,
+   "recall": 0.022
+  },
+  {
+   "part": "Piano",
+   "n_pred": 0,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "part": "Pendant",
+   "n_pred": 6000,
+   "f@5%": 0.055356092935040305,
+   "precision": 0.044833333333333336,
+   "recall": 0.07233333333333333
+  },
+  {
+   "part": "Lamp_Standing",
+   "n_pred": 0,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "part": "Lamp_Arc",
+   "n_pred": 156,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "part": "Bench",
+   "n_pred": 3000,
+   "f@5%": 0.0,
+   "precision": 0.0,
+   "recall": 0.0
+  }
+ ],
+ "scene_f@5%": 0.5358100335933251,
+ "scene_precision@5%": 0.7460780318850915,
+ "scene_recall@5%": 0.41800361240968975,
+ "scene_f@10%": 0.8225202832276147,
+ "mean_pos_err_m": 1.336065947977611,
+ "legacy_obj_f@5%_matched": 0.18399771485801694
+}
