@@ -1,0 +1,37 @@
+.DS_Store
+VSI-Bench/
+.claude/
+__pycache__
+__pycache__/
+.vscode/
+*.pyc
+*.blend1
+*.blend2
+eval/results/
+misc
+misc/
+sandbox/.venv/
+.venv-vjepa/
+sandbox/results/
+sandbox/eval_plots/
+sandbox/log/
+.conda/
+.tmp
+.vscode/
+blend/
+blend
+
+# Local authoring tools, private study responses, and build state
+.cursor/skills/
+eval/human/packs/
+eval/human/returns/
+numeric_evidence.json
+paper_state.json
+texput.log
+.env
+.env.*
+!.env.example
+.staticrypt.json
+
+# Local recoverable archives (not published)
+/_archive/

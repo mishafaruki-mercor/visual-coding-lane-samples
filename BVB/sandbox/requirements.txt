@@ -1,0 +1,2 @@
+litellm>=1.99
+tenacity
