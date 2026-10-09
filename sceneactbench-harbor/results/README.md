@@ -1,6 +1,6 @@
 # Results
 
-All rewards use the corrected scorer (`tooling/scorer/metrics.py`); the golden solution scores 1.000 on both
+All rewards use the corrected scorer (`tasks/*/tests/scorer/metrics.py`); the golden solution scores 1.000 on both
 tasks. Each rollout folder has `RESULTS.md` (score table), `input_vs_output.png` (the 3 input views vs the
 model's build from the same cameras), `topdown_overlay.png`, the model's `agent_scene.glb`, `score.json` and
 `trajectory_steps.json` (every step the agent took).

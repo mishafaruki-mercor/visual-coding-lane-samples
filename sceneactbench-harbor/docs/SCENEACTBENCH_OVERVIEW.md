@@ -83,7 +83,7 @@ Run outputs land in `runs/<model>/<task_type>/<task_id>/`: `score.json` (headlin
 Default step limits (`run_benchmark.sh`): 30; Articulated 60; Reconstruction 35; Dynamic 80.
 
 ### Our custom Reconstruction samples (Harbor tasks, `tasks/`)
-Each sample is a self-contained Harbor task. The contributor supplies a `.blend` of a room and a short `samples/<name>/scene.json`; `tooling/make_sample.py` derives everything else (see `CONTRIBUTING.md`).
+Each sample is a self-contained Harbor task, generated from a Blender scene of a furnished room (`samples/<name>/`).
 
 | File | Role | Description |
 |---|---|---|
@@ -98,18 +98,16 @@ Each sample is a self-contained Harbor task. The contributor supplies a `.blend`
 | `tests/verify.py`, `tests/scorer/metrics.py` | Verifier | Corrected Reconstruction scorer; reward = `obj_f@5%_nn` |
 | `tests/golden/scene/*_full.glb`, `tests/golden/cameras.json` | Answer key | Golden solution and reference camera poses; only present at grading time |
 
-Shared scaffolding (`environment/`, `tests/` except the golden files, `solution/solve.sh`) is identical across tasks; canonical copies live in `tooling/harbor_template/`, and `tooling/make_sample.py` assembles each task.
+Shared scaffolding (`environment/`, `tests/` except the golden files, `solution/solve.sh`) is identical across tasks.
 
 ## Contributor Workflow
-Full guide: `CONTRIBUTING.md`.
-1. **Pick a scene.** A room `.blend` with 5–12 main furniture items.
-2. **List its objects.** `python tooling/make_sample.py --list <file.blend>` prints every object with its centre and size.
-3. **Write `samples/<name>/scene.json`.** Map each furniture item to object-name patterns (e.g. `"Chair": ["Chair_*"]`), set `units_to_metres` if the file isn't in metres. Anything unlisted (walls, decor, lights) is left out; any item name works.
-4. **Build.** `python tooling/make_sample.py samples/<name>/scene.json` builds the golden solution (one mesh per item, metres, floor at 0), places 3 cameras so every item is in view, renders the inputs (furniture only, plain background, fov_x 39.6°, 768 px), writes the Harbor task with the official prompt, and runs the golden check (≥ 0.95). It stops with a plain-English error on unmatched patterns, objects claimed twice, wrong units / stray objects, or items cut off or hidden in every view.
-5. **Check the pictures.** `samples/<name>/build/preview.png`.
-6. **Validate in Harbor.** `harbor run -a oracle` ≈ 1.0, `harbor run -a nop` = 0.
-7. **Run a model** (`harbor run -p tasks/<task> -a <agent> -m <model>`; the answer key sits in `tests/`, which Harbor copies in only at grading time) and make the write-up with `tooling/report.py`.
-8. **Audit the run.** No harness errors, no reads of the answer key, and `tooling/verify.py --pred` shows the no-alignment check below the reward. Confirm the failure visually in the report.
+**Scene Selection:** Pick one furnished indoor room as a Blender file and check that it suits the difficulty you're after. A good room has 5–12 main pieces of furniture at realistic sizes, each clearly visible from at least one corner of the room. Avoid rooms that are mostly small clutter or have furniture completely hidden behind other pieces.
+
+**Task Authoring:** Say which objects in the Blender file make up each piece of furniture; walls, floors and small decorations are left out. The task generator builds the hidden answer key, takes three pictures of the room from three different corners (the agent's only input), and writes the Harbor task with each camera's position in the prompt. Check the three pictures, and if a piece is missing, hidden or unclear, adjust and regenerate.
+
+**Verifier Construction:** Run the grader on the answer key itself. The oracle loads the real furniture into Blender as if it were the agent's answer and must score 1.0; a no-op run, where the agent builds nothing, must score 0.0.
+
+**Verifier Calibration:** Run rollouts with frontier models and review a spread of good and bad results. Compare the agent's room with the real one using the before/after pictures and per-item scores, and check that every low score matches a visible mistake: a piece missing, in the wrong place, the wrong size or shape, or facing the wrong way. Count a failure only when at least one picture clearly showed the piece; re-run borderline results, since the same model can score quite differently from run to run; and check that scores spread across models.
 
 ## Category Distribution
 **Published benchmark (by task):**
@@ -177,15 +175,15 @@ Kimi K3 single runs on official cases, for reference: Layout (Bedroom-5088) 83.8
 ### Custom Reconstruction sample (`tasks/recon-<name>/`)
 **Format compliance**
 - ☐ **Valid Harbor task folder.** `instruction.md`, `task.toml`, `environment/Dockerfile` (+ `input/`, `sceneactbench/`), `solution/solve.sh` + `golden_scene.glb`, `tests/test.sh` + `export_scene.py` + `verify.py` + `scorer/` + `golden/` all present; the image builds and the run executes with no harness error.
-- ☐ **Workspace contract.** Scaffolding is identical to `tooling/harbor_template/` (only `input/`, `golden/`, `golden_scene.glb`, `instruction.md`, `task.toml` differ per task); the task was generated by `make_sample.py`, not edited by hand.
-- ☐ **Golden solution well-formed.** One mesh per item, a single material per mesh, metres, Z-up, floor at 0, no stray far-away geometry (all enforced by `make_sample.py`).
+- ☐ **Workspace contract.** Scaffolding is identical across tasks (only `input/`, `golden/`, `golden_scene.glb`, `instruction.md`, `task.toml` differ per task); tasks are generated, not edited by hand.
+- ☐ **Golden solution well-formed.** One mesh per item, a single material per mesh, metres, Z-up, floor at 0, no stray far-away geometry (enforced by the task generator).
 
 **Specificity / instruction–verifier alignment**
 - ☐ **Golden = what the prompt asks for.** Furniture only; no room shell; decor excluded unless large and obvious.
-- ☐ **Every golden item is visible.** Each item is fully in frame in at least one view and not hidden in every view (checked by `make_sample.py`); `preview.png` reviewed by eye.
+- ☐ **Every golden item is visible.** Each item is fully in frame in at least one view and not hidden in every view (checked by the task generator); `preview.png` reviewed by eye.
 
 **Solvability**
-- ☐ **Golden ≥ 95.** `make_sample.py` golden check passes (ours: 1.000, 1.000), and the Harbor oracle run scores ≈ 1.0.
+- ☐ **Golden ≥ 95.** The golden check passes (ours: 1.000, 1.000), and the Harbor oracle run scores ≈ 1.0.
 
 **Integrity / anti-cheat**
 - ☐ **Answer key isolated during runs.** The golden solution lives only in `tests/` and `solution/`, which the agent never sees; `environment/` contains only the input images.
@@ -198,5 +196,5 @@ Kimi K3 single runs on official cases, for reference: Layout (Bedroom-5088) 83.8
 **Verifier quality**
 - ☐ **Discriminates good from bad.** On the living room: golden 100, one box per object 47.3, shapes shuffled between positions 23.6, one big box 7.4.
 - ☐ **Scoring never lowers the model's result.** The no-alignment check is lower than the headline (living room 7.8 vs 12.8; gaming room 2.2 vs 16.1).
-- ☐ **Failure confirmed visually.** `tooling/report.py` images show the misplacement that the score reports.
+- ☐ **Failure confirmed visually.** The before/after images show the misplacement that the score reports.
 - ☐ **Single-run caveat stated.** One run per sample; repeat runs needed before claiming an average.

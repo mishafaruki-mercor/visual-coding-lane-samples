@@ -1,7 +1,7 @@
 # SceneActBench Reconstruction — Harbor edition
 
 Reconstruction tasks from [SceneActBench](https://arxiv.org/abs/2607.22393), packaged as
-[Harbor](https://github.com/laude-institute/harbor) tasks, plus the tooling to make your own.
+[Harbor](https://github.com/laude-institute/harbor) tasks, with the verifiers and the scores of our sample rollouts.
 
 **The task:** an agent gets 3 pictures of a furnished room (with the exact camera positions) and an empty
 Blender. It must rebuild every piece of furniture in 3D. The scene it leaves in Blender is scored against a
@@ -34,11 +34,7 @@ PYTHONPATH=agents harbor run -p tasks/recon-gaming-room \
 ```
 
 The reward is in the Harbor job folder (`<trial>/verifier/reward.txt`), with per-item detail in
-`<trial>/verifier/score.json`. To get the before/after picture and score table:
-
-```bash
-python tooling/report.py jobs/<job>/<trial> --task tasks/recon-gaming-room --out results/<model>/recon-gaming-room
-```
+`<trial>/verifier/score.json`; Harbor also keeps the agent's 3D scene as `<trial>/verifier/agent_scene.glb`.
 
 ### Which agent?
 - **`agents/sceneactbench_agent`** (recommended) is the original SceneActBench agent loop, packaged as a Harbor
@@ -48,40 +44,18 @@ python tooling/report.py jobs/<job>/<trial> --task tasks/recon-gaming-room --out
   `blender` MCP server in `task.toml`. Check that your model provider accepts images inside tool results;
   the Vercel AI Gateway, for example, silently drops them.
 
-## Make your own sample
-
-Bring a `.blend` of a furnished room, write a short `scene.json` saying which objects make up each piece of
-furniture, and run one command:
-
-```bash
-pip install -r requirements.txt              # plus Blender 4.2+ installed locally
-python tooling/make_sample.py --list samples/my-room/my_room.blend
-python tooling/make_sample.py samples/my-room/scene.json     # -> tasks/recon-my-room
-harbor run -p tasks/recon-my-room -a oracle  # ~1.0
-harbor run -p tasks/recon-my-room -a nop     # 0.0
-```
-
-Step-by-step guide: **[CONTRIBUTING.md](CONTRIBUTING.md)**.
-
 ## Repository layout
 
 ```
-samples/<name>/            scene.json + the source .blend (what a contributor provides)
-tasks/recon-<name>/        generated Harbor tasks (what you run)
+tasks/recon-<name>/        the Harbor tasks (what you run)
   instruction.md             agent prompt: official SceneActBench Reconstruction prompt + the 3 views
   task.toml                  timeouts, resources, the `blender` MCP server
   environment/               Dockerfile (Ubuntu + Blender 5.0.1 + blender-mcp) and the 3 input images
   solution/                  oracle: loads the golden solution into Blender
   tests/                     verifier + hidden answer key (copied in only at grading time)
 agents/sceneactbench_agent/ Harbor agent: the SceneActBench loop, for OpenAI-compatible models
-tooling/
-  make_sample.py             .blend + scene.json -> golden solution, input views, Harbor task, checks
-  report.py                  Harbor run -> before/after picture + score table
-  verify.py                  score any .glb against a task offline
-  scorer/metrics.py          the scorer (same file as tasks/*/tests/scorer/)
-  harbor_template/           files copied into every task (environment, tests, solution)
-  blender/                   Blender-side scripts used by the tools
-results/kimi-k3/            Kimi K3 results on the two samples
+results/kimi-k3/            Kimi K3 rollouts on the two samples: scores, before/after pictures, 3D scenes
+samples/<name>/            the source Blender scene each task was made from (reference only)
 docs/SCENEACTBENCH_OVERVIEW.md  benchmark description, scoring details, quality checklist
 validation/                 oracle / nop check results for the shipped tasks
 ```
