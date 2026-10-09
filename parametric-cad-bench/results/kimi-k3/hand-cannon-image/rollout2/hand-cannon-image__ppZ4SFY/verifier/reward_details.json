@@ -1,0 +1,8 @@
+{
+  "reward": 0.887282,
+  "geometry_similarity": 0.7974000195779839,
+  "cad_spec_consistency": 1.0,
+  "combined": 0.8872816411398589,
+  "geometry_similarity_reason": "reference.FCStd vs answer.FCStd: overall=0.797 [solid_count=1 (matched)] (surface_types=0.735, volume=0.510, surface_area=1.000, principal_moments=1.000, icp=0.988); surface_types_diff=1.841% (Close); volume_diff=0.309% (Close); surface_area_diff=0.405% (Matched); bbox_diff=0.503% (OCCT OBB; gate passed); principal_moments_diff=0.253% (Matched); icp[reference.FCStd vs answer.FCStd: reward=0.988 rmse=2.1798e-03 max_residual=1.1257e-02 mm]",
+  "cad_spec_consistency_reason": "spec.json vs answer.FCStd: spec_score=1.000 (25/25 consistent, 0 inconsistent, 0 not_found; failure_budget=10)"
+}

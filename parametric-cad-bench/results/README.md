@@ -6,10 +6,15 @@ Run outputs for the three tasks in this dataset, laid out exactly as Harbor writ
 results/
   oracle/                  Oracle job (reference submitted as the answer): all 3 tasks score 1.0
   kimi-k3/
-    lobed-rotor-image/     Kimi K3 job: 0.174
-    hand-cannon-image/     Kimi K3 job: 0.035 (partial; see below)
-    tray-bracket-image/    Kimi K3 job: 0.259 (partial; see below)
+    lobed-rotor-image/     Kimi K3, 1 rollout: 0.174
+                           rollout1/, comparison.png, README.md
+    hand-cannon-image/     Kimi K3, 3 rollouts: 0.035, 0.887, 0.034 (average 0.319)
+                           rollout1/ (partial; see below), rollout2/, rollout3/, comparison.png, README.md
+    tray-bracket-image/    Kimi K3, 2 rollouts: 0.259, 0.047 (average 0.153)
+                           rollout1/ (partial; see below), rollout2/, comparison.png, README.md
 ```
+
+Each `kimi-k3/<task>/` folder has one `rolloutN/` folder per Kimi K3 run (the Harbor job files plus the trial folder), a `comparison.png` showing the reference, each rollout's model and its difference from the reference, and a README with the per-rollout scores and what went wrong.
 
 ## Run settings
 
@@ -17,7 +22,7 @@ results/
 |---|---|---|
 | Agent | `oracle` (runs `solution/solve.sh`) | mini-swe-agent 2.4.6, reasoning effort `max`, CAD Bench v3 leaderboard multimodal config |
 | Model | n/a | `moonshotai/kimi-k3` through the Vercel AI Gateway |
-| Attempts | 1 per task | 1 per task |
+| Attempts | 1 per task | Lobed rotor 1, hand cannon 3, tray bracket 2 rollouts (see each `kimi-k3/<task>/README.md`) |
 | Command | `harbor run -p . -a oracle` | see each job's `config.json` |
 
 The Kimi K3 runs were made on the same tasks under earlier working names: `lobed-rotor-image`, `hand-cannon-v2-image` and `tray-bracket-image-v3`. Those use the same instruction, drawing, verifier, spec and reference as the tasks in this repo. The only differences were the name and a `--platform=linux/amd64` line in the Dockerfiles, which was needed to run on a Mac.
@@ -55,7 +60,7 @@ The Kimi K3 runs were made on the same tasks under earlier working names: `lobed
 | `verifier/answer.png` | `tests/test.sh` | Render of `answer.FCStd` (`freecad-validator render`); for review only, not scored |
 | `verifier/test-stdout.txt` | `tests/test.sh` | Verifier console output (empty when nothing is printed) |
 
-## Missing files (hand cannon and tray Kimi K3 runs)
+## Missing files (hand cannon and tray rollout1)
 
 The full job folders for these two runs were in a temporary directory that was cleared after the runs. Only the files that had already been copied out survived:
 - `config.json` (job)

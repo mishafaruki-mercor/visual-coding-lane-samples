@@ -1,0 +1,49 @@
+{
+    "id": "b6caea99-6e86-4a82-a9d5-b80857c181f4",
+    "started_at": "2026-10-09T11:59:30.925435",
+    "updated_at": "2026-10-09T13:12:18.333443",
+    "finished_at": "2026-10-09T13:12:18.333443",
+    "n_total_trials": 3,
+    "stats": {
+        "n_completed_trials": 3,
+        "n_errored_trials": 1,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "mini-swe-agent__moonshotai/kimi-k3__adhoc": {
+                "n_trials": 3,
+                "n_errors": 1,
+                "metrics": [
+                    {
+                        "mean": 0.31134733333333336
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "lobed-rotor-image__akrsn2z"
+                        ],
+                        "0.887282": [
+                            "hand-cannon-image__ppZ4SFY"
+                        ],
+                        "0.04676": [
+                            "tray-bracket-image__KBAsL7J"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "NonZeroAgentExitCodeError": [
+                        "lobed-rotor-image__akrsn2z"
+                    ]
+                }
+            }
+        },
+        "n_input_tokens": 38178111,
+        "n_cache_tokens": 27920704,
+        "n_output_tokens": 519002,
+        "cost_usd": 0.0
+    }
+}

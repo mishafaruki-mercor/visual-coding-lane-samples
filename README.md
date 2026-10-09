@@ -4,6 +4,6 @@ Combined repository of three benchmark projects. Each lives in its own folder wi
 
 | Folder | Description | Original repo |
 |---|---|---|
-| [`parametric-cad-bench/`](parametric-cad-bench) | Three image-to-CAD tasks in Parametric CAD Bench v3 / Harbor format | mishafaruki-arch/parametric-cad-bench |
+| [`parametric-cad-bench/`](parametric-cad-bench) | Three image-to-CAD tasks in Parametric CAD Bench v3 / Harbor format | mishafaruki-mercor/parametric-cad-bench |
 | [`blender-videobench/`](blender-videobench) | BVB (Blender-VideoBench) video-reconstruction task in Harbor format: rebuild a real office video as an animated Blender scene, graded by a vision judge, with tooling to build your own from a video | mishafaruki-mercor/bvb-harbor |
 | [`sceneactbench-harbor/`](sceneactbench-harbor) | SceneActBench Reconstruction tasks in Harbor format, with tooling to build your own samples from a .blend | mishafaruki-mercor/sceneactbench-harbor |

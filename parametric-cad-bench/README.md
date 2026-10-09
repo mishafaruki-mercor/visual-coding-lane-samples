@@ -6,11 +6,11 @@ Three Image-to-CAD tasks in Parametric CAD Bench v3 Harbor format. Each task fol
 
 | Task | Part | Spec parameters | Kimi K3 score |
 |---|---|---|---|
-| `lobed-rotor-image` | Six-rotor lobed housing | 13 | 0.174 |
-| `hand-cannon-image` | Hand cannon | 25 | 0.035 |
-| `tray-bracket-image` | Perforated tray bracket | 38 | 0.259 |
+| `lobed-rotor-image` | Six-rotor lobed housing | 13 | 0.174 (1 rollout) |
+| `hand-cannon-image` | Hand cannon | 25 | 0.319 (average of 3 rollouts: 0.035, 0.887, 0.034) |
+| `tray-bracket-image` | Perforated tray bracket | 38 | 0.153 (average of 2 rollouts: 0.259, 0.047) |
 
-Kimi K3 scores come from single runs with mini-swe-agent 2.4.6 at reasoning effort max (Oct 2026). The full run outputs (oracle and Kimi K3) are in [`results/`](results/).
+Kimi K3 scores are averages over the rollouts run so far (average across the three tasks: **0.215**), with mini-swe-agent 2.4.6 at reasoning effort max (Oct 2026). The full run outputs (oracle and every Kimi K3 rollout) and a comparison image per task are in [`results/`](results/).
 
 ## Task layout (same for all three)
 
