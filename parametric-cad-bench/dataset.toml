@@ -1,0 +1,23 @@
+# Dataset manifest for local/cad-bench-image-samples
+# Add tasks using: harbor add <org>/<name>
+# Publish using: harbor publish
+
+[dataset]
+name = "local/cad-bench-image-samples"
+version = "1.0.0"
+description = "Three image-to-CAD tasks (lobed rotor, hand cannon, perforated tray bracket) in CAD Bench v3 Harbor format."
+authors = []
+keywords = []
+
+[[tasks]]
+name = "local/lobed-rotor-image"
+digest = "sha256:3fd45d088e176f6bf3edfad482f85ea1f8345c98f92a3af65e1f05dfebde5fe6"
+
+[[tasks]]
+name = "local/hand-cannon-image"
+digest = "sha256:19289d6a7e794134e649033a2e23c7bb5c8b70373611917cc1a70d7b9b200e9e"
+
+[[tasks]]
+name = "local/tray-bracket-image"
+digest = "sha256:b92945cc165b9e2eb78f5a48941f4aa497fb69b08c52abafe49d17cb97b09927"
+

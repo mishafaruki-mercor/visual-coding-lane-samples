@@ -1,0 +1,6 @@
+{
+ "mode": "image_to_cad",
+ "name": "Six-Rotor Annular Assembly",
+ "description": "Engineering drawing of a single-solid six-rotor annular assembly: a base plate carrying an annular housing ring whose front lip has a 21-tooth internal crown, a centre seven-lobe rotor with a raised hex drive, and five seven-lobe satellite rotors on a pitch circle. A front view, a section, and rotor and tooth details specify the part. Dimensions are in millimetres.",
+ "key_parameters": "- **dimensions**\n  - housing_outer_diameter = 108 mm (front view)\n  - housing_inner_diameter = 99 mm (section A-A)\n  - crown_tip_diameter = 91 mm (section A-A)\n  - crown_teeth_count = 21\n  - crown_tooth_width = 6 mm (detail C)\n  - housing_depth = 18 mm (section A-A)\n  - base_thickness = 4 mm (section A-A)\n  - lip_thickness = 3 mm (section A-A)\n  - rotor_thickness = 10.25 mm (section A-A)\n  - rotor_core_diameter = 21.6 mm (detail B)\n  - rotor_lobe_radius = 4 mm (detail B)\n  - hex_across_flats = 14.4 mm (front view)\n  - hex_height = 5 mm (section A-A)"
+}

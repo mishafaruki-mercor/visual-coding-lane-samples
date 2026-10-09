@@ -1,0 +1,9 @@
+{
+    "job_name": "oracle-cad-bench-final-moved",
+    "jobs_dir": "/private/tmp/claude-501/-Users-mishafuraki-Desktop-cad-bench-submission/d81bdc4c-3faa-4b3f-bc30-bd80d887c897/scratchpad/jobs",
+    "datasets": [
+        {
+            "path": "CAD Bench Final"
+        }
+    ]
+}
