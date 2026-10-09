@@ -17,7 +17,8 @@ examples/
   office_questions.jsonl  the office task's 15 questions, as a format reference
   office_make_golden.py   the hand fixes that turned GPT-6 Astra's scene into the office golden
 results/
-  kimi-k3/                a full Harbor run of Kimi K3: score breakdown, judged frames, video, scene
+  kimi-k3/                Kimi K3 in Harbor: rollout1/ and rollout2/ (score breakdown, judged frames,
+                          side-by-side video, scene) and the average
 requirements.txt          Python packages for make_task.py
 LICENSE-BVB               license for the BVB scoring code copied into template/ and each task
 ```
@@ -58,10 +59,10 @@ Each trial's verifier output is in `jobs/<job>/<trial>/verifier/`:
 |---|---|
 | Golden solution (oracle) | 1.00 (11 of 11 counted questions) |
 | GPT-6 Astra (high), unedited scene | 0.91 |
-| Kimi K3 (`kimi-code` agent), [full results](results/kimi-k3) | 0.55 (6 of 11) |
+| Kimi K3 (`kimi-code` agent), [2 rollouts](results/kimi-k3) | 0.55 average (rollout 1: 0.55, rollout 2: 0.55) |
 | No submission (`nop`) | 0.00 |
 
-Kimi K3 and the empty submission are full Harbor runs with the final settings: the agent built its
+Kimi K3's two rollouts and the empty submission are full Harbor runs: the agent built its
 scene from scratch in the task's container and the task's verifier graded it. The golden's 1.00 and
 the GPT-6 Astra score come from grading saved renders with the task's final questions and 5-vote
 judge; an earlier full Harbor run of the golden, with the first question wording and 3 votes,

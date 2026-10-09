@@ -1,0 +1,380 @@
+{
+  "reward": 0.5454545454545454,
+  "kept": 6,
+  "counted": 11,
+  "judge_model": "gpt-5.4-mini",
+  "votes": 5,
+  "n_frames": 16,
+  "scene": {
+    "has_camera": true,
+    "camera_animated": true,
+    "meshes": 407,
+    "lights": 4,
+    "frame_start": 1,
+    "frame_end": 730
+  },
+  "questions": [
+    {
+      "id": "900001",
+      "question": "At the very start of the video, is the camera pointed at the floor, the ceiling, the windows, or straight across the office?",
+      "ground_truth": "A",
+      "options": [
+        "A. floor",
+        "B. ceiling",
+        "C. windows",
+        "D. across the office"
+      ],
+      "source_answers": [
+        "floor",
+        "floor",
+        "floor",
+        "floor",
+        "floor"
+      ],
+      "counted": true,
+      "render_answers": [
+        "ceiling",
+        "ceiling",
+        "ceiling",
+        "ceiling",
+        "ceiling"
+      ],
+      "kept": false
+    },
+    {
+      "id": "900002",
+      "question": "For most of the video, is the camera close to the desks at standing height, or far away looking over the whole office from above?",
+      "ground_truth": "A",
+      "options": [
+        "A. close to the desks",
+        "B. far away from above"
+      ],
+      "source_answers": [
+        "standing height",
+        "standing height",
+        "standing height",
+        "standing height",
+        "standing height"
+      ],
+      "counted": false,
+      "render_answers": null,
+      "kept": false
+    },
+    {
+      "id": "900003",
+      "question": "Does the camera mostly stay in one corner of the office, or does it travel through the whole office?",
+      "ground_truth": "A",
+      "options": [
+        "A. one corner",
+        "B. whole office"
+      ],
+      "source_answers": [
+        "whole office",
+        "whole office",
+        "whole office",
+        "whole office",
+        "whole office"
+      ],
+      "counted": false,
+      "render_answers": null,
+      "kept": false
+    },
+    {
+      "id": "900004",
+      "question": "In the first few seconds of the video, does the camera show the windows or the whiteboard?",
+      "ground_truth": "A",
+      "options": [
+        "A. windows",
+        "B. whiteboard"
+      ],
+      "source_answers": [
+        "windows",
+        "windows",
+        "windows",
+        "windows",
+        "windows"
+      ],
+      "counted": true,
+      "render_answers": [
+        "windows",
+        "windows",
+        "windows",
+        "windows",
+        "windows"
+      ],
+      "kept": true
+    },
+    {
+      "id": "900005",
+      "question": "What will be the first-time appearance order of the following categories in the video: book, window shade, soda can, whiteboard?",
+      "ground_truth": "A",
+      "options": [
+        "A. book, window shade, soda can, whiteboard",
+        "B. window shade, book, whiteboard, soda can",
+        "C. soda can, whiteboard, window shade, book",
+        "D. whiteboard, soda can, book, window shade"
+      ],
+      "source_answers": [
+        "book, window shade, soda can, whiteboard",
+        "book, window shade, soda can, whiteboard",
+        "window shade, soda can, book, whiteboard",
+        "window shade, soda can, book, whiteboard",
+        "window shade, soda can, book, whiteboard"
+      ],
+      "counted": false,
+      "render_answers": null,
+      "kept": false
+    },
+    {
+      "id": "900006",
+      "question": "Which of these objects is on a desk: a soda can, a desk lamp, a printer, or a potted plant?",
+      "ground_truth": "A",
+      "options": [
+        "A. soda can",
+        "B. desk lamp",
+        "C. printer",
+        "D. potted plant"
+      ],
+      "source_answers": [
+        "soda can",
+        "soda can",
+        "soda can",
+        "soda can",
+        "soda can"
+      ],
+      "counted": true,
+      "render_answers": [
+        "potted plant",
+        "potted plant",
+        "potted plant",
+        "potted plant",
+        "potted plant"
+      ],
+      "kept": false
+    },
+    {
+      "id": "900007",
+      "question": "What object is lying on the carpet at the start of the video: a book, a cup, a backpack, or a phone?",
+      "ground_truth": "A",
+      "options": [
+        "A. book",
+        "B. cup",
+        "C. backpack",
+        "D. phone"
+      ],
+      "source_answers": [
+        "book",
+        "book",
+        "book",
+        "book",
+        "book"
+      ],
+      "counted": true,
+      "render_answers": [
+        "book",
+        "book",
+        "book",
+        "book",
+        "book"
+      ],
+      "kept": true
+    },
+    {
+      "id": "900008",
+      "question": "Are the windows covered by roller shades, curtains, vertical blinds, or nothing?",
+      "ground_truth": "A",
+      "options": [
+        "A. roller shades",
+        "B. curtains",
+        "C. vertical blinds",
+        "D. nothing"
+      ],
+      "source_answers": [
+        "roller shades",
+        "roller shades",
+        "roller shades",
+        "roller shades",
+        "roller shades"
+      ],
+      "counted": true,
+      "render_answers": [
+        "roller shades",
+        "roller shades",
+        "roller shades",
+        "roller shades",
+        "roller shades"
+      ],
+      "kept": true
+    },
+    {
+      "id": "900009",
+      "question": "Is the ceiling an exposed ceiling with ducts, a tiled drop ceiling, or a wooden ceiling?",
+      "ground_truth": "A",
+      "options": [
+        "A. exposed ceiling with ducts",
+        "B. tiled drop ceiling",
+        "C. wooden ceiling"
+      ],
+      "source_answers": [
+        "exposed ceiling with ducts",
+        "exposed ceiling with ducts",
+        "exposed ceiling with ducts",
+        "exposed ceiling with ducts",
+        "exposed ceiling with ducts"
+      ],
+      "counted": true,
+      "render_answers": [
+        "tiled drop ceiling",
+        "tiled drop ceiling",
+        "tiled drop ceiling",
+        "tiled drop ceiling",
+        "tiled drop ceiling"
+      ],
+      "kept": false
+    },
+    {
+      "id": "900010",
+      "question": "Which of these is on the far wall of the office: a whiteboard, a TV, a painting, or a clock?",
+      "ground_truth": "A",
+      "options": [
+        "A. whiteboard",
+        "B. TV",
+        "C. painting",
+        "D. clock"
+      ],
+      "source_answers": [
+        "whiteboard",
+        "whiteboard",
+        "whiteboard",
+        "whiteboard",
+        "whiteboard"
+      ],
+      "counted": true,
+      "render_answers": [
+        "TV",
+        "TV",
+        "TV",
+        "TV",
+        "TV"
+      ],
+      "kept": false
+    },
+    {
+      "id": "900011",
+      "question": "How many chair(s) are in the window corner?",
+      "ground_truth": "2",
+      "options": null,
+      "source_answers": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "counted": false,
+      "render_answers": null,
+      "kept": false
+    },
+    {
+      "id": "900012",
+      "question": "Are the chairs in the window corner next to the windows or in the middle of the room?",
+      "ground_truth": "A",
+      "options": [
+        "A. next to the windows",
+        "B. middle of the room"
+      ],
+      "source_answers": [
+        "next to the windows",
+        "next to the windows",
+        "next to the windows",
+        "next to the windows",
+        "next to the windows"
+      ],
+      "counted": true,
+      "render_answers": [
+        "next to the windows",
+        "next to the windows",
+        "next to the windows",
+        "next to the windows",
+        "next to the windows"
+      ],
+      "kept": true
+    },
+    {
+      "id": "900013",
+      "question": "Which side of the open laptop is the red soda can on, as shown in the video: left or right?",
+      "ground_truth": "B",
+      "options": [
+        "A. left",
+        "B. right"
+      ],
+      "source_answers": [
+        "right",
+        "right",
+        "right",
+        "right",
+        "right"
+      ],
+      "counted": true,
+      "render_answers": [
+        "left",
+        "left",
+        "left",
+        "left",
+        "left"
+      ],
+      "kept": false
+    },
+    {
+      "id": "900014",
+      "question": "In the window corner, are the cardboard boxes on the window ledge, on a desk, or on the floor in the middle of the room?",
+      "ground_truth": "A",
+      "options": [
+        "A. window ledge",
+        "B. desk",
+        "C. floor in the middle of the room"
+      ],
+      "source_answers": [
+        "on the window ledge",
+        "on the window ledge",
+        "on the window ledge",
+        "on the window ledge",
+        "on the window ledge"
+      ],
+      "counted": true,
+      "render_answers": [
+        "window ledge",
+        "window ledge",
+        "window ledge",
+        "window ledge",
+        "window ledge"
+      ],
+      "kept": true
+    },
+    {
+      "id": "900015",
+      "question": "Are the desks near the camera arranged in long rows of connected desks, or in separate enclosed cubicles?",
+      "ground_truth": "A",
+      "options": [
+        "A. rows",
+        "B. cubicles"
+      ],
+      "source_answers": [
+        "long rows of connected desks",
+        "long rows of connected desks",
+        "long rows",
+        "long rows of connected desks",
+        "long rows of connected desks"
+      ],
+      "counted": true,
+      "render_answers": [
+        "long rows",
+        "long rows of connected desks",
+        "long rows of connected desks",
+        "long rows",
+        "long rows of connected desks"
+      ],
+      "kept": true
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "agent": "kimi-code",
+  "model": "moonshotai/kimi-k3",
+  "allowed_agent_hosts": [
+    "ai-gateway.vercel.sh"
+  ],
+  "agent_env": {
+    "KIMI_MODEL_BASE_URL": "https://ai-gateway.vercel.sh/v1",
+    "KIMI_MODEL_API_KEY": "${VERCEL_AI_GATEWAY_API_KEY}",
+    "KIMI_MODEL_MAX_CONTEXT_SIZE": "1000000",
+    "KIMI_MODEL_CAPABILITIES": "image_in,thinking",
+    "KIMI_MODEL_THINKING_EFFORT": "high",
+    "KIMI_CODE_EXPERIMENTAL_FLAG": "true"
+  }
+}
